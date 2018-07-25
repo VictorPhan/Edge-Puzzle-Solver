@@ -4,29 +4,34 @@ void Algorithm::solve_board(Board b, vector<Piece> pieces) {
     // b.print_constraints();
     // cout << b.update_moves(pieces);
     // b.print_moves();
-    cout << pieces.size() << '\n';
-    if(pieces.size() > 5) {
-        if(b.update_moves(pieces)) {
-            vector<int> tmp;
-            // cout << "Row: " << b.row_move << '\n';
-            // cout << "Col: " << b.col_move << '\n';
-            for(size_t it=0; it<pieces.size(); it++) {
-                tmp = Board::compare(pieces[it], 
-                    b.constraints[b.row_move][b.col_move]);
-                if(tmp.size() > 0) {
-                    for(size_t at=0; at<tmp.size(); at++) {
-                        vector<Piece> pieces_cpy = pieces;
-                        Board next = Algorithm::step(b, pieces[it], tmp[at]);
-                        next.bitmask[b.row_move][b.col_move] = 1;
-                        pieces_cpy.erase(pieces_cpy.begin() + it);
-                        solve_board(next, pieces_cpy);
-                    }
+    // cout << pieces.size() << '\n';
+    if(pieces.size() == 1) {
+        b.print_constraints();
+        b.print_bitmask();
+        pieces[0].printEdges();
+    }
+    if(pieces.size() == 0) {
+        b.print_constraints();
+        b.print_bitmask();
+    }
+    if(b.update_moves(pieces)) {
+        // b.print_constraints();
+        vector<int> tmp;
+        // cout << "Row: " << b.row_move << '\n';
+        // cout << "Col: " << b.col_move << '\n';
+        for(size_t it=0; it<pieces.size(); it++) {
+            tmp = Board::compare(pieces[it], 
+                b.constraints[b.row_move][b.col_move]);
+            if(tmp.size() > 0) {
+                for(size_t at=0; at<tmp.size(); at++) {
+                    vector<Piece> pieces_cpy = pieces;
+                    Board next = Algorithm::step(b, pieces[it], tmp[at]);
+                    next.bitmask[b.row_move][b.col_move] = 1;
+                    pieces_cpy.erase(pieces_cpy.begin() + it);
+                    solve_board(next, pieces_cpy);
                 }
             }
         }
-    }
-    else {
-        b.print_constraints();
     }
 }
 

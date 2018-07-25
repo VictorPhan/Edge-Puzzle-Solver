@@ -2,17 +2,23 @@
 
 Board::Board() {}
 
+void wait ( int seconds )
+{
+	clock_t endwait;
+	endwait = clock () + seconds * CLOCKS_PER_SEC ;
+	while (clock() < endwait) {}
+}
+
 bool Board::update_moves(vector<Piece> ps) {
-    // print_constraints();
-    // print_bitmask();
+    // wait(1);
     size_t min_move = 0;
     vector<int> count;
     vector<int> tmp;
-    // bool aswitch = false;
+    bool aswitch = false;
     for(int i=0; i<rows; i++) {
         for(int j=0; j<cols; j++) {
             if(bitmask[i][j] == 0) {
-                // aswitch = true;
+                aswitch = true;
                 for(size_t it=0; it<ps.size(); it++) {
                     tmp = compare(ps[it], constraints[i][j]);
                     count.insert(count.end(), tmp.begin(), tmp.end());
@@ -32,10 +38,10 @@ bool Board::update_moves(vector<Piece> ps) {
             }
         }
     }
-    // if(aswitch == false) {
-    //     print_constraints();
-    //     print_bitmask();
-    // }
+    if(aswitch == false) {
+        // print_constraints();
+        // print_bitmask();
+    }
     // print_constraints();
     // print_moves();
     // print_bitmask();

@@ -6,6 +6,7 @@
 #include <string.h>
 #include <tuple>
 #include "piece.h"
+#include <time.h>
 
 using namespace std;
 
