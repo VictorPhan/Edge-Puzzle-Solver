@@ -8,10 +8,6 @@ Piece::Piece(int a, int b, int c, int d) {
     edges[3] = d;
 }
 
-int* Piece::getEdges() {
-    return edges;
-}
-
 void Piece::printEdges() {
     for (int i=0; i<3; i++) {
         std::cout << edges[i] << ' ';
