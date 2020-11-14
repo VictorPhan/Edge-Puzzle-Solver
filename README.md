@@ -14,7 +14,7 @@ The edges of the piece are separated by whitespace and the pieces are separated 
 The border is specified by the edge type that will fit into the border in a clockwise order around the board,
 edges separated by whitespace and the sides of the border separated by rows.
 
-To call the program, pass in the piecesFile and bordersFile into `main` like so after building with `make`:
+To call the program, pass in the file containing pieces and borders to `main`:
 `./main piecesFile bordersFile`
 
 ## File Structure
