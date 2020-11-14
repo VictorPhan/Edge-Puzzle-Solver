@@ -22,3 +22,4 @@ To call the program, pass in the piecesFile and bordersFile into `main` like so 
 * `algorithm.cpp`: the program's solution search mechanism.
 * `board.cpp`: board representation and board manipulation operations.
 * `piece.cpp`: piece representation and print operations.
+* `main.cpp`: main program
