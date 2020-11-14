@@ -16,3 +16,9 @@ edges separated by whitespace and the sides of the border separated by rows.
 
 To call the program, pass in the piecesFile and bordersFile into `main` like so after building with `make`:
 `./main piecesFile bordersFile`
+
+### File Structure
+* `Makefile`: compile and build the main program and its dependencies.
+* `algorithm.cpp`: the program's solution search mechanism.
+* `board.cpp`: board representation and board manipulation operations.
+* `piece.cpp`: piece representation and print operations.
